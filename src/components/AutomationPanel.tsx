@@ -30,6 +30,7 @@ interface AutomationPanelProps {
   totalArticlesCount?: number;
   onRefreshStats?: () => Promise<void> | void;
   onSyncBlogger?: () => Promise<void> | void;
+  onOpenGoogleIndex?: () => void;
 }
 
 export const AutomationPanel: React.FC<AutomationPanelProps> = ({
@@ -38,7 +39,8 @@ export const AutomationPanel: React.FC<AutomationPanelProps> = ({
   bloggerPostsCount = 299,
   totalArticlesCount = 299,
   onRefreshStats,
-  onSyncBlogger
+  onSyncBlogger,
+  onOpenGoogleIndex
 }) => {
   const [syncStatus, setSyncStatus] = useState<'idle' | 'running' | 'success'>('idle');
   const [indexNowStatus, setIndexNowStatus] = useState<'idle' | 'running' | 'submitted'>('idle');
@@ -126,11 +128,20 @@ export const AutomationPanel: React.FC<AutomationPanelProps> = ({
           </h2>
           <p className="text-sm text-slate-400 mt-1">
             {lang === 'tr'
-              ? `emrepelit7337.blogspot.com bloğundaki tüm ${bloggerPostsCount} yazı (toplam ${totalArticlesCount} makale) her 60 saniyede bir canlı olarak senkronize edilir ve 8 sitenin tamamının sci-phi.ai.studio ile 301 bağlantısı aktiftir.`
-              : `All ${bloggerPostsCount} posts on emrepelit7337.blogspot.com (${totalArticlesCount} total articles) are continuously synced every 60 seconds across all 8 websites.`}
+              ? `emrepelit7337.blogspot.com bloğundaki tüm ${bloggerPostsCount} yazı (toplam ${totalArticlesCount} makale) her 60 saniyede bir canlı olarak senkronize edilir ve 7 sitenin tamamının sci-phi.ai.studio ile 301 bağlantısı aktiftir.`
+              : `All ${bloggerPostsCount} posts on emrepelit7337.blogspot.com (${totalArticlesCount} total articles) are continuously synced every 60 seconds across all 7 websites.`}
           </p>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
+          {onOpenGoogleIndex && (
+            <button
+              onClick={onOpenGoogleIndex}
+              className="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs shadow-lg shadow-emerald-500/20 transition flex items-center gap-1.5 cursor-pointer"
+            >
+              <Globe className="w-4 h-4" />
+              <span>Google ile İndeksle (Search Console Tekil Döngü)</span>
+            </button>
+          )}
           <a
             href="/automation-panel.html"
             target="_blank"
@@ -192,23 +203,23 @@ export const AutomationPanel: React.FC<AutomationPanelProps> = ({
           </div>
         </div>
 
-        {/* Module 2: 301 Redirects Engine for All 8 Sites */}
+        {/* Module 2: 301 Redirects Engine for All 7 Sites */}
         <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between mb-3">
               <span className="text-xs font-bold text-sky-400 uppercase tracking-wider">
-                {lang === 'tr' ? '8 Site Tam 301 Yönlendirme Motoru' : '8-Site Full 301 Redirect Engine'}
+                {lang === 'tr' ? '7 Site Tam 301 Yönlendirme Motoru' : '7-Site Full 301 Redirect Engine'}
               </span>
               <span className="flex items-center gap-1 text-[11px] text-emerald-400 bg-emerald-950/40 px-2 py-0.5 rounded border border-emerald-800/40">
                 <ShieldCheck className="w-3 h-3" />
-                8 / 8 Connected
+                7 / 7 Connected
               </span>
             </div>
             <h3 className="text-lg font-bold text-white mb-2">Primary Hub: sci-phi.ai.studio</h3>
             <p className="text-xs text-slate-300 leading-relaxed font-serif">
               {lang === 'tr'
-                ? 'Analitik panelindeki 8 sitenin tamamı HTTP 301 Moved Permanently ve kanonik yönlendirme köprüsüyle doğrudan sci-phi.ai.studio birincil hub\'ına bağlanmıştır.'
-                : 'All 8 websites in the analytics panel are permanently linked via HTTP 301 and canonical bridges to sci-phi.ai.studio.'}
+                ? 'Analitik panelindeki 7 sitenin tamamı HTTP 301 Moved Permanently ve kanonik yönlendirme köprüsüyle doğrudan sci-phi.ai.studio birincil hub\'ına bağlanmıştır.'
+                : 'All 7 websites in the analytics panel are permanently linked via HTTP 301 and canonical bridges to sci-phi.ai.studio.'}
             </p>
             <div className="mt-4 p-3 bg-slate-950 rounded-xl border border-slate-800/80 text-[11px] font-mono space-y-1.5 max-h-48 overflow-y-auto">
               {validSites.map((site) => (
@@ -226,13 +237,13 @@ export const AutomationPanel: React.FC<AutomationPanelProps> = ({
             <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
             <span>
               {lang === 'tr'
-                ? '8 sitenin tamamında Path ve Query parametreleri korunur'
-                : 'Path and Query parameters preserved across all 8 websites'}
+                ? '7 sitenin tamamında Path ve Query parametreleri korunur'
+                : 'Path and Query parameters preserved across all 7 websites'}
             </span>
           </div>
         </div>
 
-        {/* Module 3: Multi-Site 10-Language IndexNow & Sitemap Engine (8 Web Sitesini 10 Dilde Aynı Anda İndeksler) */}
+        {/* Module 3: Multi-Site 10-Language IndexNow & Sitemap Engine */}
         <div className="bg-slate-900 border-2 border-purple-500/40 rounded-2xl p-6 shadow-xl flex flex-col justify-between md:col-span-2">
           <div>
             <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
@@ -245,18 +256,18 @@ export const AutomationPanel: React.FC<AutomationPanelProps> = ({
                 </span>
               </span>
               <span className="text-[11px] text-purple-300 bg-purple-950/60 px-2.5 py-0.5 rounded-full border border-purple-700/50 font-mono">
-                IndexNow • Bing • Yandex • Google • Tüm Tarayıcılar (8 Site × {totalArticlesCount + 1} Sayfa × 10 Dil = {allSitesTotalUrls.toLocaleString('tr-TR')} URL)
+                IndexNow • Bing • Yandex • Google • Tüm Tarayıcılar (7 Site × {totalArticlesCount + 1} Sayfa × 10 Dil = {allSitesTotalUrls.toLocaleString('tr-TR')} URL)
               </span>
             </div>
             <h3 className="text-lg font-bold text-white mb-2">
               {lang === 'tr'
-                ? `Tek Tıkla Tüm 8 Web Sitesinde ${totalArticlesCount} Makaleyi 10 Dilde Tüm Web Tarayıcılarında İndeksle`
-                : `Simultaneously Index All ${totalArticlesCount} Articles in 10 Languages Across All 8 Websites & Web Browsers`}
+                ? `Tek Tıkla Tüm 7 Web Sitesinde ${totalArticlesCount} Makaleyi 10 Dilde Tüm Web Tarayıcılarında İndeksle`
+                : `Simultaneously Index All ${totalArticlesCount} Articles in 10 Languages Across All 7 Websites & Web Browsers`}
             </h3>
             <p className="text-xs text-slate-300 leading-relaxed font-serif">
               {lang === 'tr'
-                ? `IndexNow Ping Gönder butonuna basıldığında analitik panelinde yer alan 8 web sitesinin tamamı için ${totalArticlesCount} makalenin 10 dildeki (TR, EN, DE, FR, ES, IT, RU, AR, ZH, JA) tüm bağlantıları (site başına ${urlsPerSite.toLocaleString('tr-TR')} URL, toplam ${allSitesTotalUrls.toLocaleString('tr-TR')} URL) Google, Bing, Yandex, Seznam, Naver ve tüm web tarayıcılarında (Chrome, Safari, Firefox, Edge, Brave, Opera) anında indekslenir.`
-                : `Triggering IndexNow dispatches instant indexing pings for all 8 ecosystem websites and all ${totalArticlesCount} article URLs across all 10 languages (${allSitesTotalUrls.toLocaleString()} URLs) simultaneously to search engines and web browsers.`}
+                ? `IndexNow Ping Gönder butonuna basıldığında analitik panelinde yer alan 7 web sitesinin tamamı için ${totalArticlesCount} makalenin 10 dildeki (TR, EN, DE, FR, ES, IT, RU, AR, ZH, JA) tüm bağlantıları (site başına ${urlsPerSite.toLocaleString('tr-TR')} URL, toplam ${allSitesTotalUrls.toLocaleString('tr-TR')} URL) Google, Bing, Yandex, Seznam, Naver ve tüm web tarayıcılarında (Chrome, Safari, Firefox, Edge, Brave, Opera) anında indekslenir.`
+                : `Triggering IndexNow dispatches instant indexing pings for all 7 ecosystem websites and all ${totalArticlesCount} article URLs across all 10 languages (${allSitesTotalUrls.toLocaleString()} URLs) simultaneously to search engines and web browsers.`}
             </p>
 
             <div className="mt-4 flex flex-wrap items-center gap-2">
@@ -280,29 +291,40 @@ export const AutomationPanel: React.FC<AutomationPanelProps> = ({
                 <span>/robots.txt (10 Dil Sitemap)</span>
                 <ExternalLink className="w-3 h-3 text-slate-500" />
               </a>
-              <button
-                onClick={triggerIndexNowAllSites}
-                disabled={indexNowStatus === 'running'}
-                className="ml-auto px-5 py-2.5 bg-purple-600 hover:bg-purple-500 disabled:opacity-50 text-white rounded-xl text-xs font-bold transition flex items-center gap-2 shadow-lg shadow-purple-600/30 cursor-pointer"
-              >
-                <Send className={`w-4 h-4 ${indexNowStatus === 'running' ? 'animate-bounce' : ''}`} />
-                <span>
-                  {indexNowStatus === 'running'
-                    ? lang === 'tr'
-                      ? '10 Dilde İndeksleniyor...'
-                      : 'Indexing in 10 Languages...'
-                    : indexNowStatus === 'submitted'
-                    ? lang === 'tr'
-                      ? `✓ 10 Dilde ${allSitesTotalUrls.toLocaleString('tr-TR')} URL İndekslendi!`
-                      : `✓ ${allSitesTotalUrls.toLocaleString()} URLs Indexed in 10 Languages!`
-                    : lang === 'tr'
-                    ? `IndexNow İle 10 Dilde İndeksle (${allSitesTotalUrls.toLocaleString('tr-TR')} URL)`
-                    : `IndexNow Ping All 10 Languages (${allSitesTotalUrls.toLocaleString()} URLs)`}
-                </span>
-              </button>
+              <div className="ml-auto flex flex-wrap items-center gap-2">
+                {onOpenGoogleIndex && (
+                  <button
+                    onClick={onOpenGoogleIndex}
+                    className="px-4 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 rounded-xl text-xs font-black transition flex items-center gap-2 shadow-lg shadow-emerald-500/20 cursor-pointer"
+                  >
+                    <Globe className="w-4 h-4" />
+                    <span>Google ile İndeksle (Makaleleri Ayrı Ayrı Dizine Ekle)</span>
+                  </button>
+                )}
+                <button
+                  onClick={triggerIndexNowAllSites}
+                  disabled={indexNowStatus === 'running'}
+                  className="px-5 py-2.5 bg-purple-600 hover:bg-purple-500 disabled:opacity-50 text-white rounded-xl text-xs font-bold transition flex items-center gap-2 shadow-lg shadow-purple-600/30 cursor-pointer"
+                >
+                  <Send className={`w-4 h-4 ${indexNowStatus === 'running' ? 'animate-bounce' : ''}`} />
+                  <span>
+                    {indexNowStatus === 'running'
+                      ? lang === 'tr'
+                        ? '10 Dilde İndeksleniyor...'
+                        : 'Indexing in 10 Languages...'
+                      : indexNowStatus === 'submitted'
+                      ? lang === 'tr'
+                        ? `✓ 10 Dilde ${allSitesTotalUrls.toLocaleString('tr-TR')} URL İndekslendi!`
+                        : `✓ ${allSitesTotalUrls.toLocaleString()} URLs Indexed in 10 Languages!`
+                      : lang === 'tr'
+                      ? `IndexNow İle 10 Dilde İndeksle (${allSitesTotalUrls.toLocaleString('tr-TR')} URL)`
+                      : `IndexNow Ping All 10 Languages (${allSitesTotalUrls.toLocaleString()} URLs)`}
+                  </span>
+                </button>
+              </div>
             </div>
 
-            {/* 8 Sitenin 10 Dilde İndekslenme Sonuç Tablosu */}
+            {/* 7 Sitenin 10 Dilde İndekslenme Sonuç Tablosu */}
             {indexNowResults.length > 0 && (
               <div className="mt-5 p-4 rounded-2xl bg-slate-950 border border-emerald-500/40 space-y-3 animate-fade-in">
                 <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-2">
@@ -310,8 +332,8 @@ export const AutomationPanel: React.FC<AutomationPanelProps> = ({
                     <CheckCircle2 className="w-4 h-4" />
                     <span>
                       {lang === 'tr'
-                        ? `8 Web Sitesinin Tamamında 10 Dilde Toplam ${totalIndexedUrls.toLocaleString('tr-TR')} URL Tüm Web Tarayıcılarında İndekslendi!`
-                        : `Successfully Indexed ${totalIndexedUrls.toLocaleString()} URLs in 10 Languages Across All 8 Websites & Browsers!`}
+                        ? `7 Web Sitesinin Tamamında 10 Dilde Toplam ${totalIndexedUrls.toLocaleString('tr-TR')} URL Tüm Web Tarayıcılarında İndekslendi!`
+                        : `Successfully Indexed ${totalIndexedUrls.toLocaleString()} URLs in 10 Languages Across All 7 Websites & Browsers!`}
                     </span>
                   </span>
                   <span className="text-[11px] font-mono text-amber-400">

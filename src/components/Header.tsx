@@ -33,6 +33,8 @@ interface HeaderProps {
   onOpenSearch: () => void;
   onOpenAuthor: () => void;
   onOpenInvite?: () => void;
+  onOpenGoogleIndex?: () => void;
+  googleIndexStatus?: { indexedCount: number; totalCount: number; isRunning: boolean };
   onListenSite?: () => void;
   isSiteTranslating?: boolean;
 }
@@ -47,6 +49,8 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenSearch,
   onOpenAuthor,
   onOpenInvite,
+  onOpenGoogleIndex,
+  googleIndexStatus,
   onListenSite,
   isSiteTranslating = false
 }) => {
@@ -150,6 +154,25 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Action Bar */}
           <div className="flex items-center gap-1.5 sm:gap-2">
             <PWAInstallButton lang={lang} />
+            {onOpenGoogleIndex && (
+              <button
+                onClick={onOpenGoogleIndex}
+                className="px-2.5 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs shadow-lg shadow-emerald-500/20 transition flex items-center gap-1.5 cursor-pointer"
+                title="Google Search Console: Makaleleri ve Önemli Sayfaları Ayrı Ayrı Dizine Ekle"
+              >
+                {googleIndexStatus?.isRunning ? (
+                  <Loader2 className="w-3.5 h-3.5 animate-spin text-slate-950 shrink-0" />
+                ) : (
+                  <Globe className="w-3.5 h-3.5 text-slate-950 shrink-0" />
+                )}
+                <span>Google ile İndeksle</span>
+                {googleIndexStatus && googleIndexStatus.indexedCount > 0 && (
+                  <span className="hidden xl:inline font-mono text-[10px] px-1.5 py-0.2 rounded bg-slate-950/20 text-slate-950">
+                    {googleIndexStatus.indexedCount}/{googleIndexStatus.totalCount}
+                  </span>
+                )}
+              </button>
+            )}
             {onOpenInvite && (
               <button
                 onClick={onOpenInvite}

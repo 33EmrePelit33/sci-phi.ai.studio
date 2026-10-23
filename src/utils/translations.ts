@@ -108,16 +108,16 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     ja: 'ライブデータ同期：アクティブ'
   },
   redirect_network_label: {
-    tr: '301 Ağı: 8 / 8 Site → sci-phi.ai.studio (Tam Bağlı)',
-    en: '301 Mesh: 8 / 8 Sites → sci-phi.ai.studio (Fully Connected)',
-    de: '301-Netz: 8 / 8 Seiten → sci-phi.ai.studio (Vollständig verbunden)',
-    fr: 'Réseau 301 : 8 / 8 Sites → sci-phi.ai.studio (Entièrement connecté)',
-    es: 'Red 301: 8 / 8 Sitios → sci-phi.ai.studio (Totalmente conectado)',
-    it: 'Rete 301: 8 / 8 Siti → sci-phi.ai.studio (Completamente connesso)',
-    ru: 'Сеть 301: 8 / 8 сайтов → sci-phi.ai.studio (Полностью подключено)',
-    ar: 'شبكة 301: 8 / 8 مواقع ← sci-phi.ai.studio (متصلة بالكامل)',
-    zh: '301网络：8 / 8 站点 → sci-phi.ai.studio（完全连接）',
-    ja: '301ネットワーク：8 / 8 サイト → sci-phi.ai.studio（完全接続）'
+    tr: '301 Ağı: 7 / 7 Site → sci-phi.ai.studio (Tam Bağlı)',
+    en: '301 Mesh: 7 / 7 Sites → sci-phi.ai.studio (Fully Connected)',
+    de: '301-Netz: 7 / 7 Seiten → sci-phi.ai.studio (Vollständig verbunden)',
+    fr: 'Réseau 301 : 7 / 7 Sites → sci-phi.ai.studio (Entièrement connecté)',
+    es: 'Red 301: 7 / 7 Sitios → sci-phi.ai.studio (Totalmente conectado)',
+    it: 'Rete 301: 7 / 7 Siti → sci-phi.ai.studio (Completamente connesso)',
+    ru: 'Сеть 301: 7 / 7 сайтов → sci-phi.ai.studio (Полностью подключено)',
+    ar: 'شبكة 301: 7 / 7 مواقع ← sci-phi.ai.studio (متصلة بالكامل)',
+    zh: '301网络：7 / 7 站点 → sci-phi.ai.studio（完全连接）',
+    ja: '301ネットワーク：7 / 7 サイト → sci-phi.ai.studio（完全接続）'
   },
   cumulative_total_label: {
     tr: 'Kümülatif Toplam:',
@@ -168,16 +168,16 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     ja: '最終同期'
   },
   hero_badge: {
-    tr: 'Sci-Phi: Bilim & Felsefe Portalı (8 Site → 301 sci-phi.ai.studio)',
-    en: 'Sci-Phi: Science & Philosophy Portal (8 Sites → 301 sci-phi.ai.studio)',
-    de: 'Sci-Phi: Wissenschaft & Philosophie (8 Seiten → 301 sci-phi.ai.studio)',
-    fr: 'Sci-Phi : Portail Science & Philosophie (8 Sites → 301 sci-phi.ai.studio)',
-    es: 'Sci-Phi: Portal de Ciencia y Filosofía (8 Sitios → 301 sci-phi.ai.studio)',
-    it: 'Sci-Phi: Portale di Scienza e Filosofia (8 Siti → 301 sci-phi.ai.studio)',
-    ru: 'Sci-Phi: Портал науки и философии (8 сайтов → 301 sci-phi.ai.studio)',
-    ar: 'بوابة العلوم والفلسفة (8 مواقع ← 301 sci-phi.ai.studio)',
-    zh: 'Sci-Phi：科学与哲学门户（8个站点 → 301 sci-phi.ai.studio）',
-    ja: 'Sci-Phi：科学と哲学ポータル（8サイト → 301 sci-phi.ai.studio）'
+    tr: 'Sci-Phi: Bilim & Felsefe Portalı (7 Site → 301 sci-phi.ai.studio)',
+    en: 'Sci-Phi: Science & Philosophy Portal (7 Sites → 301 sci-phi.ai.studio)',
+    de: 'Sci-Phi: Wissenschaft & Philosophie (7 Seiten → 301 sci-phi.ai.studio)',
+    fr: 'Sci-Phi : Portail Science & Philosophie (7 Sites → 301 sci-phi.ai.studio)',
+    es: 'Sci-Phi: Portal de Ciencia y Filosofía (7 Sitios → 301 sci-phi.ai.studio)',
+    it: 'Sci-Phi: Portale di Scienza e Filosofia (7 Siti → 301 sci-phi.ai.studio)',
+    ru: 'Sci-Phi: Портал науки и философии (7 сайтов → 301 sci-phi.ai.studio)',
+    ar: 'بوابة العلوم والفلسفة (7 مواقع ← 301 sci-phi.ai.studio)',
+    zh: 'Sci-Phi：科学与哲学门户（7个站点 → 301 sci-phi.ai.studio）',
+    ja: 'Sci-Phi：科学と哲学ポータル（7サイト → 301 sci-phi.ai.studio）'
   },
   hero_title_1: {
     tr: 'Fiziksel Evrenin Sınırlarından',

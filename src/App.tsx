@@ -33,6 +33,7 @@ import { KnowledgeGraphView } from './components/interactive/KnowledgeGraphView'
 import { PWAInstallButton } from './components/PWAInstallButton';
 import { LanguageSelectorModal } from './components/LanguageSelector';
 import { InviteOutreachModal } from './components/InviteOutreachModal';
+import { GoogleIndexModal } from './components/GoogleIndexModal';
 import { ARTICLES, CATEGORIES } from './data/articles';
 import { DETAILED_TAXONOMY, resolveArticleSubcategory } from './utils/taxonomy';
 import {
@@ -146,6 +147,12 @@ export default function App() {
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
   const [isLanguageOpen, setIsLanguageOpen] = useState<boolean>(false);
   const [isInviteOpen, setIsInviteOpen] = useState<boolean>(false);
+  const [isGoogleIndexOpen, setIsGoogleIndexOpen] = useState<boolean>(false);
+  const [googleIndexStatus, setGoogleIndexStatus] = useState<{
+    indexedCount: number;
+    totalCount: number;
+    isRunning: boolean;
+  }>({ indexedCount: 0, totalCount: 325, isRunning: false });
   const [activeSimulator, setActiveSimulator] = useState<
     'block-universe' | 'chinese-room' | 'fallacy-inspector' | 'socratic-arena' | 'knowledge-graph'
   >(() => initialUi.activeSimulator || 'block-universe');
@@ -266,7 +273,7 @@ export default function App() {
 
   const { isSiteTranslating } = useWholeSiteTranslation(
     lang,
-    `${currentTab}:${selectedArticleSlug || ''}:${activeSimulator}:${isAuthorOpen}:${isInviteOpen}:${isSearchOpen}:${isLanguageOpen}:${translationTick}`
+    `${currentTab}:${selectedArticleSlug || ''}:${activeSimulator}:${isAuthorOpen}:${isInviteOpen}:${isSearchOpen}:${isLanguageOpen}`
   );
 
   useEffect(() => {
@@ -440,16 +447,11 @@ export default function App() {
       });
 
       if (typeof resolved?.bloggerSync?.bloggerPostsCount === 'number') {
-        setBloggerPostsCount((prev) => {
-          const nextCount = resolved.bloggerSync.bloggerPostsCount;
-          if (nextCount !== prev) {
-            syncBloggerCatalog(false);
-          }
-          return nextCount;
-        });
+        const nextCount = resolved.bloggerSync.bloggerPostsCount;
+        setBloggerPostsCount((prev) => (prev === nextCount ? prev : nextCount));
       }
     }
-  }, [syncBloggerCatalog]);
+  }, []);
 
   const refreshLiveStats = useCallback(async () => {
     try {
@@ -498,7 +500,7 @@ export default function App() {
   useEffect(() => {
     const isInstalledApp = isRunningAsInstalledApp();
     const excludeAuthor = shouldExcludeClientRead(authorShieldActive);
-    const sourceSite = isInstalledApp ? 'grok-app' : 'sci-phi-primary';
+    const sourceSite = 'sci-phi-primary';
     const clientWatermark = getSavedSitesWatermark();
 
     fetch('/api/analytics/record-visit', {
@@ -796,17 +798,27 @@ export default function App() {
     return getTranslatedArticle(rawFeaturedArticle, lang);
   }, [rawFeaturedArticle, lang, translationTick]);
 
+  const displayedBatchKey = useMemo(
+    () =>
+      [rawFeaturedArticle?.slug, ...displayedArticles.slice(0, 45).map((a) => a.slug)]
+        .filter(Boolean)
+        .join(','),
+    [rawFeaturedArticle?.slug, displayedArticles]
+  );
+
   // Görüntülenen makale kartlarını ve öne çıkan makaleyi seçili hedef doğal dile anında çevir
   useEffect(() => {
-    const batch = [rawFeaturedArticle, ...displayedArticles.slice(0, 45)];
+    if (lang === 'tr') return;
+    const batch = [rawFeaturedArticle, ...displayedArticles.slice(0, 45)].filter(Boolean);
     translateArticlesBatch(batch, lang);
-  }, [rawFeaturedArticle, displayedArticles, lang]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [displayedBatchKey, lang]);
 
   const handleTrackEvent = useCallback(
     (type: string, details: string, siteId?: string, articleSlug?: string) => {
       const isInstalledApp = isRunningAsInstalledApp();
       const excludeAuthor = shouldExcludeClientRead(authorShieldActive);
-      const effectiveSiteId = isInstalledApp ? 'grok-app' : siteId || 'sci-phi-primary';
+      const effectiveSiteId = !siteId || siteId === 'grok-app' ? 'sci-phi-primary' : siteId;
 
       fetch('/api/events/track', {
         method: 'POST',
@@ -901,6 +913,8 @@ export default function App() {
         onOpenSearch={() => setIsSearchOpen(true)}
         onOpenAuthor={() => setIsAuthorOpen(true)}
         onOpenInvite={() => setIsInviteOpen(true)}
+        onOpenGoogleIndex={() => setIsGoogleIndexOpen(true)}
+        googleIndexStatus={googleIndexStatus}
         onListenSite={handleListenCurrentView}
         isSiteTranslating={isSiteTranslating}
       />
@@ -968,6 +982,19 @@ export default function App() {
                     <span>{t('launch_lab', lang)}</span>
                   </button>
                   <button
+                    onClick={() => setIsGoogleIndexOpen(true)}
+                    className="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs shadow-lg shadow-emerald-500/20 transition flex items-center gap-2 cursor-pointer"
+                  >
+                    <Globe className="w-4 h-4" />
+                    <span>
+                      Google ile İndeksle (Search Console Tekil Dizin Döngüsü
+                      {googleIndexStatus.indexedCount > 0
+                        ? ` • ${googleIndexStatus.indexedCount}/${googleIndexStatus.totalCount}`
+                        : ''}
+                      )
+                    </span>
+                  </button>
+                  <button
                     onClick={() => {
                       setCurrentTab('stats');
                     }}
@@ -976,8 +1003,8 @@ export default function App() {
                     <BarChart3 className="w-4 h-4 text-amber-400" />
                     <span>
                       {lang === 'tr'
-                        ? `Açılıştan Beri 8 Site İstatistikleri: ${cumulativeTotals.totalNetReads.toLocaleString('tr-TR')} Net Okunma / ${cumulativeTotals.totalPageViews.toLocaleString('tr-TR')} Görüntüleme`
-                        : `All-Time 8-Site Stats: ${cumulativeTotals.totalNetReads.toLocaleString('tr-TR')} Net Reads / ${cumulativeTotals.totalPageViews.toLocaleString('tr-TR')} Views`}
+                        ? `Açılıştan Beri 7 Site İstatistikleri: ${cumulativeTotals.totalNetReads.toLocaleString('tr-TR')} Net Okunma / ${cumulativeTotals.totalPageViews.toLocaleString('tr-TR')} Görüntüleme`
+                        : `All-Time 7-Site Stats: ${cumulativeTotals.totalNetReads.toLocaleString('tr-TR')} Net Reads / ${cumulativeTotals.totalPageViews.toLocaleString('tr-TR')} Views`}
                     </span>
                   </button>
                   <a
@@ -1652,6 +1679,7 @@ export default function App() {
             totalArticlesCount={liveArticles.length}
             onRefreshStats={refreshLiveStats}
             onSyncBlogger={() => syncBloggerCatalog(true)}
+            onOpenGoogleIndex={() => setIsGoogleIndexOpen(true)}
           />
         ) : null}
       </main>
@@ -1683,6 +1711,13 @@ export default function App() {
                 <Linkedin className="w-3.5 h-3.5 text-sky-400" />
                 <span>www.linkedin.com/in/emrepelit109</span>
               </a>
+              <button
+                onClick={() => setIsGoogleIndexOpen(true)}
+                className="px-3 py-1.5 rounded-lg bg-emerald-500/15 border border-emerald-500/40 text-emerald-300 hover:bg-emerald-500 hover:text-slate-950 transition flex items-center gap-1.5 font-bold text-xs cursor-pointer"
+              >
+                <Globe className="w-3.5 h-3.5" />
+                <span>Google ile İndeksle</span>
+              </button>
               <button
                 onClick={() => setIsInviteOpen(true)}
                 className="hover:text-amber-400 transition flex items-center gap-1 font-semibold text-amber-400 cursor-pointer"
@@ -1726,7 +1761,7 @@ export default function App() {
           </div>
           <div className="pt-4 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-400 gap-2">
             <p>
-              © 2026 Sci-Phi • Emre Pelit (<a href="mailto:emrepelit39@gmail.com" className="text-amber-400 hover:underline font-mono">emrepelit39@gmail.com</a> • <a href="https://www.linkedin.com/in/emrepelit109" target="_blank" rel="noopener noreferrer" className="text-sky-400 hover:underline font-mono">www.linkedin.com/in/emrepelit109</a>) • Açılıştan Beri (24 Nisan 2026) 8 Web Sitesi Kümülatif: {cumulativeTotals.totalNetReads.toLocaleString('tr-TR')} Net Okunma / {cumulativeTotals.totalPageViews.toLocaleString('tr-TR')} Görüntüleme.
+              © 2026 Sci-Phi • Emre Pelit (<a href="mailto:emrepelit39@gmail.com" className="text-amber-400 hover:underline font-mono">emrepelit39@gmail.com</a> • <a href="https://www.linkedin.com/in/emrepelit109" target="_blank" rel="noopener noreferrer" className="text-sky-400 hover:underline font-mono">www.linkedin.com/in/emrepelit109</a>) • Açılıştan Beri (24 Nisan 2026) 7 Web Sitesi Kümülatif: {cumulativeTotals.totalNetReads.toLocaleString('tr-TR')} Net Okunma / {cumulativeTotals.totalPageViews.toLocaleString('tr-TR')} Görüntüleme.
             </p>
             <p className="font-mono text-slate-500 flex items-center gap-1.5">
               <Globe className="w-3.5 h-3.5 text-amber-400" />
@@ -1761,6 +1796,24 @@ export default function App() {
         isOpen={isInviteOpen}
         onClose={() => setIsInviteOpen(false)}
         lang={lang}
+      />
+      <GoogleIndexModal
+        isOpen={isGoogleIndexOpen}
+        onClose={() => setIsGoogleIndexOpen(false)}
+        articles={liveArticles}
+        autoStart={true}
+        onProgressUpdate={(indexedCount, totalCount, isRunning) =>
+          setGoogleIndexStatus((prev) => {
+            if (
+              prev.indexedCount === indexedCount &&
+              prev.totalCount === totalCount &&
+              prev.isRunning === isRunning
+            ) {
+              return prev;
+            }
+            return { indexedCount, totalCount, isRunning };
+          })
+        }
       />
     </div>
   );

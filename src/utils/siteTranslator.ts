@@ -133,8 +133,12 @@ export async function translateDOMSubtree(
         const leading = leadingMatch ? leadingMatch[0] : '';
         const trailing = trailingMatch ? trailingMatch[0] : '';
         const finalStr = `${leading}${translated}${trailing}`;
-        n.nodeValue = finalStr;
+        if (n.nodeValue !== finalStr) {
+          n.nodeValue = finalStr;
+        }
         n.__sciphiAppliedText = finalStr;
+        n.__sciphiAppliedLang = targetLang;
+      } else if (n.isConnected) {
         n.__sciphiAppliedLang = targetLang;
       }
     });
@@ -143,7 +147,7 @@ export async function translateDOMSubtree(
     const offset = sourceTexts.length;
     placeholderItems.forEach(({ el }, pIdx) => {
       const trPh = translatedList[offset + pIdx];
-      if (trPh && el.isConnected) {
+      if (trPh && el.isConnected && el.placeholder !== trPh) {
         el.placeholder = trPh;
       }
     });
@@ -178,23 +182,38 @@ export function useWholeSiteTranslation(lang: string, triggerKey?: string | numb
 
     let debounceTimer: ReturnType<typeof setTimeout> | null = null;
     let isRunning = false;
+    let isCancelled = false;
+
+    const updateStatusSafe = (translating: boolean) => {
+      if (isCancelled) return;
+      setIsSiteTranslating((prev) => (prev === translating ? prev : translating));
+    };
 
     const runTranslation = () => {
-      if (isRunning) return;
+      if (isRunning || isCancelled) return;
       isRunning = true;
-      translateDOMSubtree(root, lang, setIsSiteTranslating).finally(() => {
+      translateDOMSubtree(root, lang, updateStatusSafe).finally(() => {
         isRunning = false;
       });
     };
 
     // Initial pass immediately
-    const initTimer = setTimeout(runTranslation, 30);
+    const initTimer = setTimeout(runTranslation, 40);
 
     // Dynamic DOM mutation listener for new elements, modals, tabs, simulators
-    const observer = new MutationObserver(() => {
-      if (lang === 'tr') return;
+    const observer = new MutationObserver((mutations) => {
+      if (lang === 'tr' || isRunning || isCancelled) return;
+      const hasRelevantAddition = mutations.some((m) => {
+        if (m.type !== 'childList' || m.addedNodes.length === 0) return false;
+        const targetEl = m.target instanceof HTMLElement ? m.target : m.target.parentElement;
+        if (targetEl && targetEl.closest('.notranslate, [data-notranslate="true"]')) {
+          return false;
+        }
+        return true;
+      });
+      if (!hasRelevantAddition) return;
       if (debounceTimer) clearTimeout(debounceTimer);
-      debounceTimer = setTimeout(runTranslation, 60);
+      debounceTimer = setTimeout(runTranslation, 120);
     });
 
     observer.observe(root, {
@@ -204,6 +223,7 @@ export function useWholeSiteTranslation(lang: string, triggerKey?: string | numb
 
     // Custom force trigger listener
     const handleForceTrigger = (e: Event) => {
+      if (isCancelled) return;
       const customEvent = e as CustomEvent<{ lang?: string; force?: boolean }>;
       const target = customEvent.detail?.lang || lang;
       if (customEvent.detail?.force) {
@@ -216,12 +236,13 @@ export function useWholeSiteTranslation(lang: string, triggerKey?: string | numb
           node = walker.nextNode() as TrackedTextNode | null;
         }
       }
-      translateDOMSubtree(root, target, setIsSiteTranslating);
+      translateDOMSubtree(root, target, updateStatusSafe);
     };
 
     window.addEventListener('sciphi:trigger-site-translation', handleForceTrigger);
 
     return () => {
+      isCancelled = true;
       clearTimeout(initTimer);
       if (debounceTimer) clearTimeout(debounceTimer);
       observer.disconnect();
@@ -233,7 +254,9 @@ export function useWholeSiteTranslation(lang: string, triggerKey?: string | numb
     isSiteTranslating,
     retranslateNow: () => {
       const root = document.getElementById('root');
-      return translateDOMSubtree(root, lang, setIsSiteTranslating);
+      return translateDOMSubtree(root, lang, (val) =>
+        setIsSiteTranslating((prev) => (prev === val ? prev : val))
+      );
     }
   };
 }

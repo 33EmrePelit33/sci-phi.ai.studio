@@ -145,8 +145,17 @@
           "@id": "https://sci-phi.ai.studio/#website",
           "url": "https://sci-phi.ai.studio/",
           "name": "Sci-Phi: Bilim ve Felsefe Portalı",
-          "description": "Emre Pelit tarafından hazırlanan bilim, fizik, zihin felsefesi, epistemoloji ve diyalektik düşünce portalı.",
+          "description": "Emre Pelit tarafından hazırlanan bilim, fizik, zihin felsefesi, epistemoloji ve diyalektik düşünce portalı. 8 web sitesinin kalıcı HTTP 301 yönlendirmesi ile tekil web otoritesi merkezi.",
           "inLanguage": ["tr", "en", "de", "fr", "es", "it", "ru", "ar", "zh", "ja"],
+          "sameAs": [
+            "https://sci-phi.ai.studio/",
+            "https://science-philosophy.grok.me",
+            "https://emrepelit7337.blogspot.com/",
+            "https://sci-phil.ai.studio",
+            "https://science-philosophy.ai.studio",
+            "https://science-philosophy-emre-pelit.ai.studio",
+            "https://emrepelit.github.io/science-philosophy"
+          ],
           "publisher": {
             "@type": "Person",
             "@id": "https://sci-phi.ai.studio/#author",
@@ -155,8 +164,13 @@
             "url": "https://sci-phi.ai.studio/",
             "sameAs": [
               "https://www.linkedin.com/in/emrepelit109",
+              "https://sci-phi.ai.studio/",
+              "https://science-philosophy.grok.me",
               "https://emrepelit7337.blogspot.com/",
-              "https://science-philosophy.grok.me"
+              "https://sci-phil.ai.studio",
+              "https://science-philosophy.ai.studio",
+              "https://science-philosophy-emre-pelit.ai.studio",
+              "https://emrepelit.github.io/science-philosophy"
             ],
             "jobTitle": "Felsefeci, Yazar & Araştırmacı"
           },
@@ -215,7 +229,7 @@
         // Analytics Panosu <-> Ana Portal (React) Canlı 24 Saat Senkronizasyon Köprüsü
         var SYNC_STORAGE_KEY = "sciphi_analytics_sync_state";
         var syncChannel = typeof BroadcastChannel !== "undefined" ? new BroadcastChannel("sciphi_analytics_channel") : null;
-        var latestTotals = { sumReads: 60104, sumViews: 81601 };
+        var latestTotals = { sumReads: 70428, sumViews: 98684 };
 
         function readStoredSyncState() {
           try {

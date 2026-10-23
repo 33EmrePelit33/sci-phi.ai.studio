@@ -115,7 +115,7 @@ export const ArticleView: React.FC<ArticleViewProps> = ({
     }
 
     const isInstalledApp = isRunningAsInstalledApp();
-    const targetSite = isInstalledApp ? 'grok-app' : 'sci-phi-primary';
+    const targetSite = 'sci-phi-primary';
 
     // Makale açıldığında hem görüntüleme hem de okunma (article_read / pwa_app_read) sayılır
     if (onTrackEvent && lastTrackedSlug.current !== article.slug) {
@@ -466,19 +466,24 @@ export const ArticleView: React.FC<ArticleViewProps> = ({
             </div>
           </div>
 
-          {/* 8 Web Sitesi Bazında Ayrıntılı Dağılım */}
+          {/* 8 Web Sitesi Bazında Ayrıntılı Dağılım (Kalıcı 301 → sci-phi.ai.studio) */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
             {ALL_8_WEBSITES_STATS.map((site) => {
               const count = resolvedMetrics.bySite[site.id] || 0;
               const viewsCount = resolvedMetrics.viewsBySite?.[site.id] ?? Math.round(Number(count) * 1.35);
               return (
-                <div
+                <a
                   key={site.id}
-                  className="p-2.5 rounded-xl bg-slate-950/90 border border-slate-800/80 flex flex-col justify-between"
+                  href={`/go/301/${encodeURIComponent(site.id)}?slug=${encodeURIComponent(article.slug)}`}
+                  className="p-2.5 rounded-xl bg-slate-950/90 border border-slate-800/80 hover:border-amber-500/40 flex flex-col justify-between transition"
+                  title={`${site.domain} → Kalıcı HTTP 301 → sci-phi.ai.studio (%100 Web Otoritesi)`}
                 >
-                  <span className="text-[11px] text-slate-400 font-mono truncate" title={site.domain}>
-                    {site.domain}
-                  </span>
+                  <div className="flex items-center justify-between gap-1">
+                    <span className="text-[11px] text-slate-300 font-mono truncate">
+                      {site.domain}
+                    </span>
+                    <span className="text-[8px] font-mono text-amber-400 shrink-0">301→Hub</span>
+                  </div>
                   <div className="flex items-baseline justify-between mt-1">
                     <span className="text-xs font-bold font-mono text-emerald-400">
                       {Number(count).toLocaleString('tr-TR')}{' '}
@@ -489,7 +494,7 @@ export const ArticleView: React.FC<ArticleViewProps> = ({
                       <span className="text-[9px] font-sans font-normal text-slate-500">gör.</span>
                     </span>
                   </div>
-                </div>
+                </a>
               );
             })}
           </div>

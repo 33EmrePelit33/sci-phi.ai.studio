@@ -1,5 +1,8 @@
 {
   "name": "Sci-Phi: Bilim ve Felsefe Portalı",
   "description": "Emre Pelit tarafından hazırlanan bilim, fizik, zihin felsefesi, epistemoloji ve diyalektik düşünce portalı. Kapsamlı makaleler, interaktif simülatörler ve analizler.",
-  "requestFramePermissions": []
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }

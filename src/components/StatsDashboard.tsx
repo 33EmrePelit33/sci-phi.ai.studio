@@ -855,20 +855,24 @@ export const StatsDashboard: React.FC<StatsDashboardProps> = ({
                 <div>
                   <div className="flex items-center justify-between text-[10px] font-mono text-slate-400 mb-1">
                     <span className="text-amber-400 font-bold">Site #{idx + 1} • {site.launchDate || '24 Nisan 2026'}</span>
-                    <span className="text-emerald-400 font-bold">● Canlı Senkron</span>
+                    <span className="text-emerald-400 font-bold">● 301 → sci-phi.ai.studio</span>
                   </div>
                   <a
-                    href={site.url}
+                    href={(site as any).redirectBridgeUrl || `/go/301/${site.id}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs font-bold text-white hover:text-amber-400 font-mono truncate flex items-center gap-1"
-                    title={site.domain}
+                    title={`${site.domain} → Kalıcı HTTP 301 → sci-phi.ai.studio (%100 Web Otoritesi)`}
                   >
                     <span className="truncate">{site.domain}</span>
                     <ExternalLink className="w-3 h-3 text-slate-500 shrink-0" />
                   </a>
                   <div className="text-[10px] text-slate-400 truncate mt-0.5" title={site.title}>
                     {site.title}
+                  </div>
+                  <div className="mt-1 px-2 py-0.5 rounded bg-sky-500/10 border border-sky-500/30 text-[9px] font-mono text-sky-300 flex items-center justify-between">
+                    <span>Kalıcı HTTP 301:</span>
+                    <span className="text-amber-300 font-bold">→ sci-phi.ai.studio (%100 Otorite)</span>
                   </div>
                 </div>
 
@@ -1315,15 +1319,19 @@ export const StatsDashboard: React.FC<StatsDashboardProps> = ({
                     <td className="p-3 text-center text-slate-500 font-bold">{idx + 1}</td>
                     <td className="p-3 font-sans">
                       <a
-                        href={site.url}
+                        href={(site as any).redirectBridgeUrl || `/go/301/${site.id}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="font-bold text-white hover:text-amber-400 font-mono text-xs flex items-center gap-1"
+                        title={`${site.domain} → Kalıcı HTTP 301 → sci-phi.ai.studio`}
                       >
                         <span>{site.domain}</span>
                         <ExternalLink className="w-3 h-3 text-slate-500 shrink-0" />
                       </a>
                       <span className="text-[10px] text-slate-400 block truncate max-w-[230px]">{site.title}</span>
+                      <span className="text-[9px] font-mono text-emerald-400 block mt-0.5">
+                        ✓ Kalıcı HTTP 301 → sci-phi.ai.studio (%100 Otorite)
+                      </span>
                     </td>
                     <td className="p-3 text-center text-[11px] text-slate-400 whitespace-nowrap">
                       {site.launchDate || '24 Nisan 2026'}
@@ -1931,19 +1939,43 @@ export const StatsDashboard: React.FC<StatsDashboardProps> = ({
             </h3>
             <p className="text-xs text-slate-400 mt-1">
               {lang === 'tr'
-                ? 'Listedeki 8 sitenin tamamı sci-phi.ai.studio birincil hub\'ına 301 yönlendirme ve kanonik köprü ile bağlıdır. Her yeni veri eklendiğinde toplamlar anında senkronize olur.'
-                : 'All 8 websites are connected via HTTP 301 to sci-phi.ai.studio and synchronize cumulative totals in real time.'}
+                ? 'Analitik panelindeki 8 web sitesinin tamamı eksiksiz ve kalıcı HTTP 301 yönlendirmesi + rel="canonical" köprüsü ile sci-phi.ai.studio adresine bağlanmıştır. Tüm web otoritesi (PageRank, Backlink, 24.000 İndeksli URL ve Okuyucu Sinyalleri) %100 oranında sci-phi.ai.studio üzerinde toplanmaktadır.'
+                : 'All 8 websites in the analytics panel are permanently connected via HTTP 301 + rel="canonical" to sci-phi.ai.studio, consolidating 100% of web authority onto sci-phi.ai.studio.'}
             </p>
           </div>
 
           {/* Quick Metrics Badge Group */}
           <div className="flex flex-wrap items-center gap-2 text-[11px] font-mono">
-            <span className="px-2.5 py-1 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
-              8/8 Site 301 Bağlı
+            <span className="px-2.5 py-1 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-bold">
+              8/8 Site Kalıcı HTTP 301 → sci-phi.ai.studio
             </span>
-            <span className="px-2.5 py-1 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/30">
-              Anlık Veri Senkronizasyonu
+            <span className="px-2.5 py-1 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/30 font-bold">
+              %100 Web Otoritesi: sci-phi.ai.studio
             </span>
+          </div>
+        </div>
+
+        {/* 8 Websites -> sci-phi.ai.studio 100% Web Authority Consolidation Banner */}
+        <div className="p-4 rounded-2xl bg-gradient-to-r from-amber-500/10 via-slate-950 to-emerald-500/10 border border-amber-500/40 flex flex-col lg:flex-row lg:items-center justify-between gap-3">
+          <div className="space-y-1">
+            <div className="flex items-center gap-2 text-xs font-mono font-bold text-amber-300">
+              <Link2 className="w-4 h-4 text-emerald-400 shrink-0" />
+              <span>KALICI HTTP 301 OTORİTE MERKEZİ: https://sci-phi.ai.studio (%100 KONSOLİDE WEB OTORİTESİ)</span>
+            </div>
+            <p className="text-[11px] text-slate-300">
+              <strong>science-philosophy.grok.me</strong>, <strong>emrepelit7337.blogspot.com</strong>, <strong>sci-phil.ai.studio</strong>, <strong>science-philosophy.ai.studio</strong>, <strong>science-philosophy-emre-pelit.ai.studio</strong> ve <strong>emrepelit.github.io/science-philosophy</strong> kalıcı <code>HTTP 301 Moved Permanently</code> ve <code>rel=&quot;canonical&quot;</code> protokolüyle doğrudan <strong>sci-phi.ai.studio</strong> ana merkezine bağlanmıştır.
+            </p>
+          </div>
+          <div className="flex flex-wrap items-center gap-2 shrink-0 font-mono text-[11px]">
+            <a
+              href="/api/seo/301-authority"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-1.5 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 font-bold transition flex items-center gap-1.5"
+            >
+              <span>301 Otorite Haritası (JSON)</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
           </div>
         </div>
 
@@ -1951,10 +1983,9 @@ export const StatsDashboard: React.FC<StatsDashboardProps> = ({
         <div className="flex flex-wrap items-center gap-2">
           {(
             [
-              { id: 'all', labelTr: `Tümü (${activeWebsites.length} Site - 301 Bağlı)`, labelEn: `All (${activeWebsites.length} Sites - 301 Linked)` },
-              { id: 'active', labelTr: 'Aktif Portallar (4)', labelEn: 'Active Portals (4)' },
-              { id: 'redirect_301', labelTr: 'Doğrudan 301 Domainleri (3)', labelEn: 'Direct 301 Domains (3)' },
-              { id: 'synced', labelTr: 'Blogger Ana Arşiv (1)', labelEn: 'Blogger Archive (1)' }
+              { id: 'all', labelTr: `Tümü (${activeWebsites.length}/8 Site — Kalıcı 301 → sci-phi.ai.studio)`, labelEn: `All (${activeWebsites.length}/8 Sites — Permanent 301 → sci-phi.ai.studio)` },
+              { id: 'active', labelTr: 'Birincil 301 Ana Otorite Hub (1 — sci-phi.ai.studio)', labelEn: 'Primary 301 Authority Hub (1 — sci-phi.ai.studio)' },
+              { id: 'redirect_301', labelTr: 'Kalıcı HTTP 301 Bağlı Kaynak Siteler (7 → sci-phi.ai.studio)', labelEn: 'Permanent HTTP 301 Source Sites (7 → sci-phi.ai.studio)' }
             ] as const
           ).map((filter) => {
             const isActive = siteFilter === filter.id;
@@ -2010,21 +2041,20 @@ export const StatsDashboard: React.FC<StatsDashboardProps> = ({
                         className={`text-[10px] font-mono px-2 py-0.5 rounded-full font-bold border ${
                           site.status === 'active'
                             ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30'
-                            : site.status === 'redirect_301'
-                            ? 'bg-sky-500/20 text-sky-400 border-sky-500/30'
-                            : 'bg-amber-500/20 text-amber-400 border-amber-500/30'
+                            : 'bg-sky-500/20 text-sky-400 border-sky-500/30'
                         }`}
                       >
                         {site.statusLabel}
                       </span>
                     </div>
 
-                    {/* Domain & Title */}
+                    {/* Domain & Title (Routed via Permanent 301 Bridge to sci-phi.ai.studio) */}
                     <a
-                      href={site.url}
+                      href={(site as any).redirectBridgeUrl || `/go/301/${site.id}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="group inline-flex items-center gap-1.5 text-sm sm:text-base font-bold text-white hover:text-amber-400 transition"
+                      title={`${site.domain} → Kalıcı HTTP 301 → sci-phi.ai.studio (%100 Web Otoritesi)`}
                     >
                       <span className="font-mono break-all">{site.domain}</span>
                       <ExternalLink className="w-3.5 h-3.5 text-slate-500 group-hover:text-amber-400 shrink-0" />
@@ -2032,14 +2062,20 @@ export const StatsDashboard: React.FC<StatsDashboardProps> = ({
                     <p className="text-xs text-slate-400 mt-1 line-clamp-1">{site.title}</p>
 
                     {/* 301 Connection Badge to sci-phi.ai.studio */}
-                    <div className="mt-2 p-2 rounded-lg bg-slate-900/90 border border-sky-500/30 flex items-center justify-between text-[10px] font-mono">
-                      <span className="flex items-center gap-1 text-sky-400 font-bold">
-                        <Link2 className="w-3 h-3" />
-                        <span>301 Köprüsü:</span>
-                      </span>
-                      <span className="text-amber-300">
-                        {isPrimary ? 'sci-phi.ai.studio (Ana Hedef Hub)' : `${site.domain.split('/')[0]} → sci-phi.ai.studio`}
-                      </span>
+                    <div className="mt-2 p-2 rounded-lg bg-slate-900/90 border border-emerald-500/40 flex flex-col gap-1 text-[10px] font-mono">
+                      <div className="flex items-center justify-between">
+                        <span className="flex items-center gap-1 text-emerald-400 font-bold">
+                          <Link2 className="w-3 h-3" />
+                          <span>Kalıcı 301 Bağı:</span>
+                        </span>
+                        <span className="text-amber-300 font-bold">
+                          {isPrimary ? 'Ana Otorite Merkezi (%100)' : 'HTTP 301 → sci-phi.ai.studio'}
+                        </span>
+                      </div>
+                      <div className="flex items-center justify-between text-[9px] text-slate-400 border-t border-slate-800/80 pt-1">
+                        <span>Web Otoritesi:</span>
+                        <span className="text-sky-300 font-bold">%100 sci-phi.ai.studio&apos;da</span>
+                      </div>
                     </div>
 
                     {/* Main Metrics (Reads & Views Synchronized from Launch) */}
@@ -2379,9 +2415,6 @@ export const StatsDashboard: React.FC<StatsDashboardProps> = ({
                       <span className="px-2 py-0.5 rounded bg-slate-900 text-slate-300 border border-slate-800">
                         GitHub: <strong>{(art.bySite['github-pages'] || 0).toLocaleString('tr-TR')}</strong>
                       </span>
-                      <span className="px-2 py-0.5 rounded bg-slate-900 text-slate-300 border border-slate-800">
-                        Grok App: <strong>{(art.bySite['grok-app'] || 0).toLocaleString('tr-TR')}</strong>
-                      </span>
                     </div>
                   </div>
                 );
@@ -2403,7 +2436,6 @@ export const StatsDashboard: React.FC<StatsDashboardProps> = ({
                   <th className="p-3 text-right text-slate-300">Kanonik</th>
                   <th className="p-3 text-right text-slate-300">Yazar</th>
                   <th className="p-3 text-right text-slate-300">GitHub</th>
-                  <th className="p-3 text-right text-slate-300">Grok App</th>
                   <th className="p-3 text-right font-bold text-white bg-slate-850">Toplam Okunma</th>
                 </tr>
               </thead>
@@ -2440,9 +2472,6 @@ export const StatsDashboard: React.FC<StatsDashboardProps> = ({
                     </td>
                     <td className="p-3 text-right text-slate-400">
                       {(art.bySite['github-pages'] || 0).toLocaleString('tr-TR')}
-                    </td>
-                    <td className="p-3 text-right text-slate-400">
-                      {(art.bySite['grok-app'] || 0).toLocaleString('tr-TR')}
                     </td>
                     <td className="p-3 text-right font-black text-amber-400 bg-slate-900/50">
                       {art.totalReads.toLocaleString('tr-TR')}

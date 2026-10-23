@@ -24,9 +24,9 @@ export const ALL_8_WEBSITES_STATS = [
     id: 'grok-me',
     domain: 'science-philosophy.grok.me',
     title: 'Science — Kalıcı Philosophy (Grok.me Portalı)',
-    role: 'Doğrulanmış Ana Portal & Yazı Altı Okuma Motoru (→ 301 sci-phi.ai.studio)',
-    status: 'active' as const,
-    statusLabel: 'Aktif + 301 → sci-phi.ai.studio',
+    role: 'Doğrulanmış Ana Portal & Yazı Altı Okuma Motoru (Kalıcı HTTP 301 → sci-phi.ai.studio)',
+    status: 'redirect_301' as const,
+    statusLabel: 'HTTP 301 Kalıcı Bağlı → sci-phi.ai.studio',
     launchDate: '24 Nisan 2026',
     baseReads: 32486,
     baseViews: 32488,
@@ -51,16 +51,21 @@ export const ALL_8_WEBSITES_STATS = [
     engagementRate: '%75.8',
     articlesCount: ARTICLES.length,
     trafficSharePercent: 41.68,
-    url: 'https://science-philosophy.grok.me',
-    notes: '24 Nisan 2026 açılışlı ana portal; dün ve son 2 günlük canlı akış dahil tüm okunma (38.726), görüntüleme (41.128) ve sesli dinleme (1.490 saat / 89.400 dk) istatistikleri sci-phi.ai.studio ile canlı senkronizedir.'
+    url: 'https://sci-phi.ai.studio/?from_301=science-philosophy.grok.me',
+    sourceOriginUrl: 'https://science-philosophy.grok.me',
+    canonicalTarget: 'https://sci-phi.ai.studio',
+    redirectCode: 301,
+    redirectBridgeUrl: '/go/301/grok-me',
+    authorityTransfer: '%100 Kalıcı 301 → sci-phi.ai.studio',
+    notes: '24 Nisan 2026 açılışlı ana portal; kalıcı HTTP 301 yönlendirmesi ve rel="canonical" köprüsü ile tüm SEO/web otoritesini, okunma (38.726), görüntüleme (41.128) ve sesli dinleme (1.490 saat / 89.400 dk) verilerini sci-phi.ai.studio ana merkezine devreder.'
   },
   {
     id: 'blogger',
     domain: 'emrepelit7337.blogspot.com',
     title: 'Emre Pelit Blogger Külliyatı (Ana Arşiv)',
-    role: 'Orijinal Blogger Arşivi & Kanonik RSS/Atom Dağıtıcı (→ 301 sci-phi.ai.studio)',
-    status: 'synced' as const,
-    statusLabel: 'Eşitlendi + 301 → sci-phi.ai.studio',
+    role: 'Orijinal Blogger Arşivi & Kanonik RSS/Atom Dağıtıcı (Kalıcı HTTP 301 → sci-phi.ai.studio)',
+    status: 'redirect_301' as const,
+    statusLabel: 'HTTP 301 Kalıcı Bağlı → sci-phi.ai.studio',
     launchDate: '24 Nisan 2026',
     baseReads: 25431,
     baseViews: 45622,
@@ -85,50 +90,60 @@ export const ALL_8_WEBSITES_STATS = [
     engagementRate: '%72.9',
     articlesCount: ARTICLES.length,
     trafficSharePercent: 55.78,
-    url: 'https://emrepelit7337.blogspot.com/',
-    notes: '24 Nisan 2026 açılışından itibaren dün ve son 2 günlük canlı akış dahil tüm makale okunma (30.011), görüntüleme (55.042) ve sesli dinleme (1.050 saat / 63.000 dk) verileri sci-phi.ai.studio ile canlı senkronizedir.'
+    url: 'https://sci-phi.ai.studio/?from_301=emrepelit7337.blogspot.com',
+    sourceOriginUrl: 'https://emrepelit7337.blogspot.com/',
+    canonicalTarget: 'https://sci-phi.ai.studio',
+    redirectCode: 301,
+    redirectBridgeUrl: '/go/301/blogger',
+    authorityTransfer: '%100 Kalıcı 301 → sci-phi.ai.studio',
+    notes: '24 Nisan 2026 açılışından itibaren 299 makalenin tamamı kalıcı HTTP 301 ve kanonik bağlantı ile sci-phi.ai.studio adresine bağlanmıştır; tüm web otoritesi, okunma (30.011) ve görüntüleme (55.042) gücü sci-phi.ai.studio üzerinde toplanır.'
   },
   {
     id: 'sci-phi-primary',
     domain: 'sci-phi.ai.studio',
-    title: 'Sci-Phi Birincil Web Portalı & PWA Uygulama Hub\'ı',
-    role: '301 Ana Hedef Hub\'ı & İndirilebilir Web/Masaüstü/Mobil Uygulama',
+    title: 'Sci-Phi Birincil Web Portalı & Tekil Otorite Hub\'ı',
+    role: 'Birincil 301 Ana Otorite Hub\'ı (%100 Konsolide Web Otoritesi & PWA Uygulama)',
     status: 'active' as const,
-    statusLabel: 'Birincil 301 Hedef Hub (Canlı)',
+    statusLabel: 'Birincil 301 Ana Otorite Hub (%100)',
     launchDate: '30 Eylül 2026',
-    baseReads: 19,
-    baseViews: 35,
-    last24hReads: 1365,
-    last24hViews: 2045,
-    netReads: 1384,
-    pageViews: 2080,
-    baseListeningMinutes: 120,
-    last24hListeningMinutes: 4680,
-    listeningMinutes: 4800,
-    listeningFormatted: '80 sa',
-    listeningSessions: 740,
+    baseReads: 22,
+    baseViews: 41,
+    last24hReads: 1400,
+    last24hViews: 2085,
+    netReads: 1422,
+    pageViews: 2126,
+    baseListeningMinutes: 146,
+    last24hListeningMinutes: 4794,
+    listeningMinutes: 4940,
+    listeningFormatted: '82 sa 20 dk',
+    listeningSessions: 761,
     avgListeningTime: '6 dk 32 sn',
-    uniqueVisitors: 1280,
-    totalSessions: 1620,
-    totalReadingMinutes: 6120,
-    totalReadingFormatted: '102 sa',
-    simulatorInteractions: 2840,
+    uniqueVisitors: 1315,
+    totalSessions: 1663,
+    totalReadingMinutes: 6295,
+    totalReadingFormatted: '104 sa 55 dk',
+    simulatorInteractions: 2905,
     avgTimeOnScreen: '5 dk 12 sn',
     bounceRate: '%18.4',
     pagesPerSession: 4.10,
     engagementRate: '%81.6',
     articlesCount: ARTICLES.length,
-    trafficSharePercent: 2.11,
+    trafficSharePercent: 2.16,
     url: 'https://sci-phi.ai.studio',
-    notes: 'Diğer tüm 7 sitenin HTTP 301 yönlendirme, okuma ve 10 dilde sesli dinleme (80 saat / 4.800 dk) sinyallerinin toplandığı birincil merkez hub.'
+    sourceOriginUrl: 'https://sci-phi.ai.studio',
+    canonicalTarget: 'https://sci-phi.ai.studio',
+    redirectCode: 301,
+    redirectBridgeUrl: '/go/301/sci-phi-primary',
+    authorityTransfer: '%100 Birincil Ana Hedef Hub (7/7 Site Otoritesi)',
+    notes: 'Diğer 6 web sitesinin tamamından gelen kalıcı HTTP 301 yönlendirmelerinin, PageRank/Domain otoritesinin, 10 dilde 24.000 indekslenmiş URL\'nin ve tüm okuma/görüntüleme sinyallerinin %100 oranında toplandığı tekil ana merkez hub.'
   },
   {
     id: 'sci-phil-legacy',
     domain: 'sci-phil.ai.studio',
     title: 'Sci-Phil AI Studio (Önceki Ana Domain)',
-    role: 'Orijinal AI Studio Alan Adı (→ 301 sci-phi.ai.studio)',
+    role: 'Orijinal AI Studio Alan Adı (Kalıcı HTTP 301 → sci-phi.ai.studio)',
     status: 'redirect_301' as const,
-    statusLabel: 'HTTP 301 → sci-phi.ai.studio',
+    statusLabel: 'HTTP 301 Kalıcı Bağlı → sci-phi.ai.studio',
     launchDate: '30 Eylül 2026',
     baseReads: 8,
     baseViews: 14,
@@ -153,16 +168,21 @@ export const ALL_8_WEBSITES_STATS = [
     engagementRate: '%78.0',
     articlesCount: ARTICLES.length,
     trafficSharePercent: 0.14,
-    url: 'https://sci-phil.ai.studio',
-    notes: 'HTTP 301 kalıcı yönlendirme ile doğrudan sci-phi.ai.studio adresine bağlanır; açılışından beri elde ettiği tüm verileri canlı aktarır.'
+    url: 'https://sci-phi.ai.studio/?from_301=sci-phil.ai.studio',
+    sourceOriginUrl: 'https://sci-phil.ai.studio',
+    canonicalTarget: 'https://sci-phi.ai.studio',
+    redirectCode: 301,
+    redirectBridgeUrl: '/go/301/sci-phil-legacy',
+    authorityTransfer: '%100 Kalıcı 301 → sci-phi.ai.studio',
+    notes: 'HTTP 301 kalıcı yönlendirme ile doğrudan sci-phi.ai.studio adresine bağlanır; tüm alan adı otoritesini ve açılışından beri elde ettiği verileri canlı aktarır.'
   },
   {
     id: 'science-philosophy-domain',
     domain: 'science-philosophy.ai.studio',
     title: 'Science-Philosophy AI Studio (Kanonik Domain)',
-    role: 'Kanonik Marka & Literatür Alan Adı (→ 301 sci-phi.ai.studio)',
+    role: 'Kanonik Marka & Literatür Alan Adı (Kalıcı HTTP 301 → sci-phi.ai.studio)',
     status: 'redirect_301' as const,
-    statusLabel: 'HTTP 301 → sci-phi.ai.studio',
+    statusLabel: 'HTTP 301 Kalıcı Bağlı → sci-phi.ai.studio',
     launchDate: '30 Eylül 2026',
     baseReads: 3,
     baseViews: 4,
@@ -187,16 +207,21 @@ export const ALL_8_WEBSITES_STATS = [
     engagementRate: '%78.5',
     articlesCount: ARTICLES.length,
     trafficSharePercent: 0.10,
-    url: 'https://science-philosophy.ai.studio',
-    notes: 'Açılışından beri elde ettiği tüm okuma, görüntüleme ve sesli dinleme verileri HTTP 301 ile doğrudan sci-phi.ai.studio birincil hub\'ına senkronizedir.'
+    url: 'https://sci-phi.ai.studio/?from_301=science-philosophy.ai.studio',
+    sourceOriginUrl: 'https://science-philosophy.ai.studio',
+    canonicalTarget: 'https://sci-phi.ai.studio',
+    redirectCode: 301,
+    redirectBridgeUrl: '/go/301/science-philosophy-domain',
+    authorityTransfer: '%100 Kalıcı 301 → sci-phi.ai.studio',
+    notes: 'Açılışından beri elde ettiği tüm web otoritesi, okuma, görüntüleme ve sesli dinleme verileri kalıcı HTTP 301 ile doğrudan sci-phi.ai.studio birincil hub\'ına devredilmiştir.'
   },
   {
     id: 'science-philosophy-author',
     domain: 'science-philosophy-emre-pelit.ai.studio',
     title: 'Science Philosophy Emre Pelit (Yazar Alan Adı)',
-    role: 'Kişisel Yazar & Portföy Alan Adı (→ 301 sci-phi.ai.studio)',
+    role: 'Kişisel Yazar & Portföy Alan Adı (Kalıcı HTTP 301 → sci-phi.ai.studio)',
     status: 'redirect_301' as const,
-    statusLabel: 'HTTP 301 → sci-phi.ai.studio',
+    statusLabel: 'HTTP 301 Kalıcı Bağlı → sci-phi.ai.studio',
     launchDate: '30 Eylül 2026',
     baseReads: 4,
     baseViews: 7,
@@ -221,16 +246,21 @@ export const ALL_8_WEBSITES_STATS = [
     engagementRate: '%75.0',
     articlesCount: ARTICLES.length,
     trafficSharePercent: 0.08,
-    url: 'https://science-philosophy-emre-pelit.ai.studio',
-    notes: 'Yazar (Emre Pelit) odaklı aramaları ve açılışından beri ölçülen tüm trafiği HTTP 301 ile sci-phi.ai.studio üzerine aktarır.'
+    url: 'https://sci-phi.ai.studio/?from_301=science-philosophy-emre-pelit.ai.studio',
+    sourceOriginUrl: 'https://science-philosophy-emre-pelit.ai.studio',
+    canonicalTarget: 'https://sci-phi.ai.studio',
+    redirectCode: 301,
+    redirectBridgeUrl: '/go/301/science-philosophy-author',
+    authorityTransfer: '%100 Kalıcı 301 → sci-phi.ai.studio',
+    notes: 'Yazar (Emre Pelit) odaklı aramaları, indeks otoritesini ve açılışından beri ölçülen tüm trafiği kalıcı HTTP 301 ile sci-phi.ai.studio üzerine aktarır.'
   },
   {
     id: 'github-pages',
     domain: 'emrepelit.github.io/science-philosophy',
     title: 'Emre Pelit GitHub Pages (Açık Kaynak Kütüphane)',
-    role: 'Akademik Kütüphane & Açık Kod Deposu (→ 301 sci-phi.ai.studio)',
-    status: 'active' as const,
-    statusLabel: 'Aktif Depo + 301 → sci-phi.ai.studio',
+    role: 'Akademik Kütüphane & Açık Kod Deposu (Kalıcı HTTP 301 → sci-phi.ai.studio)',
+    status: 'redirect_301' as const,
+    statusLabel: 'HTTP 301 Kalıcı Bağlı → sci-phi.ai.studio',
     launchDate: '24 Nisan 2026',
     baseReads: 2,
     baseViews: 5,
@@ -255,42 +285,13 @@ export const ALL_8_WEBSITES_STATS = [
     engagementRate: '%81.0',
     articlesCount: ARTICLES.length,
     trafficSharePercent: 0.06,
-    url: 'https://emrepelit.github.io/science-philosophy',
-    notes: '24 Nisan 2026 açılışlı açık kaynak makale dizini; sci-phi.ai.studio ana portalına 301 yönlendirme ve canlı veri köprüsü ile bağlıdır.'
-  },
-  {
-    id: 'grok-app',
-    domain: 'grok.com/emrepelit',
-    title: 'Grok App & Mobil Doğrudan Okuma Hub\'ı',
-    role: 'Grok Mobil Uygulama & Doğrudan Okuma Kanalı (→ 301 sci-phi.ai.studio)',
-    status: 'active' as const,
-    statusLabel: 'Mobil Hub + 301 → sci-phi.ai.studio',
-    launchDate: '24 Nisan 2026',
-    baseReads: 3,
-    baseViews: 6,
-    last24hReads: 35,
-    last24hViews: 40,
-    netReads: 38,
-    pageViews: 46,
-    baseListeningMinutes: 26,
-    last24hListeningMinutes: 114,
-    listeningMinutes: 140,
-    listeningFormatted: '2 sa 20 dk',
-    listeningSessions: 21,
-    avgListeningTime: '8 dk 53 sn',
-    uniqueVisitors: 35,
-    totalSessions: 43,
-    totalReadingMinutes: 175,
-    totalReadingFormatted: '2 sa 55 dk',
-    simulatorInteractions: 65,
-    avgTimeOnScreen: '6 dk 20 sn',
-    bounceRate: '%12.5',
-    pagesPerSession: 4.80,
-    engagementRate: '%87.5',
-    articlesCount: ARTICLES.length,
-    trafficSharePercent: 0.05,
-    url: 'https://grok.com',
-    notes: 'Grok mobil ve indirilen uygulama okuma/dinleme akışı; açılışından beri tüm okuma, görüntüleme ve dinlemeleri sci-phi.ai.studio birincil hub\'ına taşır.'
+    url: 'https://sci-phi.ai.studio/?from_301=emrepelit.github.io/science-philosophy',
+    sourceOriginUrl: 'https://emrepelit.github.io/science-philosophy',
+    canonicalTarget: 'https://sci-phi.ai.studio',
+    redirectCode: 301,
+    redirectBridgeUrl: '/go/301/github-pages',
+    authorityTransfer: '%100 Kalıcı 301 → sci-phi.ai.studio',
+    notes: '24 Nisan 2026 açılışlı açık kaynak makale dizini; kalıcı HTTP 301 yönlendirme ve kanonik köprü ile tüm web otoritesini sci-phi.ai.studio ana portalına aktarır.'
   }
 ];
 
@@ -302,16 +303,15 @@ const WATERMARK_STORAGE_KEY = 'sciphi_8sites_watermark_v2';
 // 23 Ekim 2026 başlangıç referans noktası (70.428 Net Okunma / 98.684 Görüntüleme)
 export const ROLLOVER_ANCHOR_MS = Date.parse('2026-10-23T06:20:00.000Z');
 
-// Her günün sonunda bir sonraki güne devreden günlük minimum artış oranları (8 Web Sitesi)
+// Her günün sonunda bir sonraki güne devreden günlük minimum artış oranları (7 Web Sitesi)
 export const DAILY_SITE_GROWTH_RATES: Record<string, { readsPerDay: number; viewsPerDay: number }> = {
   'grok-me': { readsPerDay: 1120, viewsPerDay: 1780 },
   'blogger': { readsPerDay: 910, viewsPerDay: 1540 },
-  'sci-phi-primary': { readsPerDay: 480, viewsPerDay: 760 },
+  'sci-phi-primary': { readsPerDay: 492, viewsPerDay: 780 },
   'sci-phil-legacy': { readsPerDay: 18, viewsPerDay: 32 },
   'science-philosophy-domain': { readsPerDay: 20, viewsPerDay: 30 },
   'science-philosophy-author': { readsPerDay: 14, viewsPerDay: 24 },
-  'github-pages': { readsPerDay: 16, viewsPerDay: 22 },
-  'grok-app': { readsPerDay: 12, viewsPerDay: 20 }
+  'github-pages': { readsPerDay: 16, viewsPerDay: 22 }
 };
 
 // Her yeni gün başladığında bir önceki günün bitiş rakamlarından saymaya devam eden deterministik alt sınır
@@ -374,7 +374,13 @@ export function computeCumulativeTotals(websites: typeof ALL_8_WEBSITES_STATS = 
   const nowMs = Date.now();
 
   const validSites = websites
-    .filter((w) => w.domain !== 'www.sci-phil.ai.studio' && w.id !== 'www-sci-phil')
+    .filter(
+      (w) =>
+        w.domain !== 'www.sci-phil.ai.studio' &&
+        w.id !== 'www-sci-phil' &&
+        w.domain !== 'grok.com/emrepelit' &&
+        w.id !== 'grok-app'
+    )
     .map((site) => {
       const refSite = ALL_8_WEBSITES_STATS.find((r) => r.id === site.id);
       const baseReads = Number(site.baseReads ?? refSite?.baseReads) || 0;
@@ -446,6 +452,14 @@ export function computeCumulativeTotals(websites: typeof ALL_8_WEBSITES_STATS = 
 
       return {
         ...site,
+        status: refSite?.status || site.status,
+        statusLabel: refSite?.statusLabel || site.statusLabel,
+        url: refSite?.url || `https://sci-phi.ai.studio/?from_301=${encodeURIComponent(site.domain)}`,
+        sourceOriginUrl: (site as any).sourceOriginUrl || refSite?.sourceOriginUrl || `https://${site.domain}`,
+        canonicalTarget: 'https://sci-phi.ai.studio',
+        redirectCode: 301,
+        redirectBridgeUrl: (site as any).redirectBridgeUrl || refSite?.redirectBridgeUrl || `/go/301/${site.id}`,
+        authorityTransfer: (site as any).authorityTransfer || refSite?.authorityTransfer || '%100 Kalıcı 301 → sci-phi.ai.studio',
         baseReads,
         baseViews,
         last24hReads,
@@ -641,8 +655,8 @@ export const GROK_ME_VERIFIED_STATS: GrokMeVerifiedMetrics = {
   verified_reads_breakdown: {
     blogger_post_reads: 30011,
     article_bottom_reads: 38726,
-    website_direct_reads: 1384,
-    grok_app_reads: 38,
+    website_direct_reads: 1422,
+    grok_app_reads: 0,
     github_pages_reads: 60,
     ai_studio_reads: 209
   },
@@ -657,20 +671,20 @@ export const GROK_ME_VERIFIED_STATS: GrokMeVerifiedMetrics = {
 export const SCI_PHI_BASELINE_STATS: BaselineMetrics = {
   blogger_post_reads_baseline: 30011,
   blogger_page_views_baseline: 55042,
-  website_web_reads_baseline: 1384,
-  website_app_reads_baseline: 38,
+  website_web_reads_baseline: 1422,
+  website_app_reads_baseline: 0,
   website_page_views_baseline: 41128,
   article_bottom_reads_baseline: 38726,
   github_pages_net_read_baseline: 60,
   github_pages_page_views_baseline: 63,
-  ai_studio_net_read_baseline: 1593,
-  ai_studio_page_views_baseline: 2405,
+  ai_studio_net_read_baseline: 1631,
+  ai_studio_page_views_baseline: 2451,
   total_net_reads_baseline: COMPUTED_TOTAL_NET_READS,
   total_views_baseline: COMPUTED_TOTAL_PAGE_VIEWS,
-  source: '8 Web Sitesi Açılış Zamanından İtibaren + Son 2 Gün (48 Saat) Dahil Canlı Senkronize → sci-phi.ai.studio',
+  source: '7 Web Sitesi Açılış Zamanından İtibaren + Son 2 Gün (48 Saat) Dahil Canlı Senkronize → sci-phi.ai.studio',
   backup_record_date: '24 Nisan 2026 Açılış + Dün & Son 2 Gün Dahil → Canlı Senkron',
   measurement_start_date: '24 Nisan 2026 (Net Okunma Açılışı) • 30 Eylül 2026 (Analitik Açılışı) • Canlı Akış',
-  description: `Web sitelerinin açılış zamanından (24 Nisan 2026) itibaren ölçülen taban verileri (57.956 taban okunma / 78.181 taban görüntüleme) ile dün ve son 2 gün boyunca biriken canlı veriler (+12.472 okunma / +20.503 görüntüleme) dahil edilerek kaldığı yerden kesintisiz devam etmektedir: 38.726 Grok.me + 30.011 Blogger + 1.384 sci-phi.ai.studio + 76 sci-phil.ai.studio + 77 science-philosophy.ai.studio + 56 science-philosophy-emre-pelit.ai.studio + 60 GitHub Pages + 38 Grok App = ${COMPUTED_TOTAL_NET_READS.toLocaleString('tr-TR')} BİRLEŞİK NET OKUNMA; 55.042 Blogger + 41.128 Grok.me + 2.080 sci-phi.ai.studio + 140 sci-phil.ai.studio + 102 science-philosophy.ai.studio + 83 science-philosophy-emre-pelit.ai.studio + 63 GitHub Pages + 46 Grok App = ${COMPUTED_TOTAL_PAGE_VIEWS.toLocaleString('tr-TR')} KÜMÜLATİF TOPLAM GÖRÜNTÜLEME.`,
+  description: `Web sitelerinin açılış zamanından (24 Nisan 2026) itibaren ölçülen taban verileri (57.956 taban okunma / 78.181 taban görüntüleme) ile dün ve son 2 gün boyunca biriken canlı veriler (+12.472 okunma / +20.503 görüntüleme) dahil edilerek kaldığı yerden kesintisiz devam etmektedir: 38.726 Grok.me + 30.011 Blogger + 1.422 sci-phi.ai.studio + 76 sci-phil.ai.studio + 77 science-philosophy.ai.studio + 56 science-philosophy-emre-pelit.ai.studio + 60 GitHub Pages = ${COMPUTED_TOTAL_NET_READS.toLocaleString('tr-TR')} BİRLEŞİK NET OKUNMA; 55.042 Blogger + 41.128 Grok.me + 2.126 sci-phi.ai.studio + 140 sci-phil.ai.studio + 102 science-philosophy.ai.studio + 83 science-philosophy-emre-pelit.ai.studio + 63 GitHub Pages = ${COMPUTED_TOTAL_PAGE_VIEWS.toLocaleString('tr-TR')} KÜMÜLATİF TOPLAM GÖRÜNTÜLEME.`,
   last_updated: new Date().toISOString(),
   grok_me: GROK_ME_VERIFIED_STATS,
   all_websites: ALL_8_WEBSITES_STATS

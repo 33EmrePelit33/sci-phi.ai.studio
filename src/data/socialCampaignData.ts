@@ -73,7 +73,7 @@ export function buildPlatformShareUrl(platformId: string, text: string, url: str
     case 'github':
       return `https://emrepelit.github.io/science-philosophy`;
     case 'grok-social':
-      return `https://grok.com/emrepelit`;
+      return `https://science-philosophy.grok.me`;
     default:
       return `https://www.linkedin.com/in/emrepelit109`;
   }
@@ -130,8 +130,8 @@ export const CONNECTED_SOCIAL_ACCOUNTS: ConnectedSocialAccount[] = [
   },
   {
     id: 'grok-social',
-    platform: 'Grok & X AI Okuma Hub (grok.com/emrepelit)',
-    handle: 'grok.com/emrepelit • science-philosophy.grok.me',
+    platform: 'Grok.me Bilim & Felsefe Portalı (science-philosophy.grok.me)',
+    handle: 'science-philosophy.grok.me',
     email: AUTHOR_EMAIL,
     profileUrl: 'https://science-philosophy.grok.me',
     shareUrlTemplate: buildPlatformShareUrl('grok-social', DEFAULT_MASTER_SHARE_TEXT),

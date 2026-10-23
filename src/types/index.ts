@@ -109,6 +109,11 @@ export interface EcoWebsiteMetric {
   articlesCount?: number;
   trafficSharePercent: number;
   url: string;
+  sourceOriginUrl?: string;
+  canonicalTarget?: string;
+  redirectCode?: number;
+  redirectBridgeUrl?: string;
+  authorityTransfer?: string;
   notes: string;
 }
 
