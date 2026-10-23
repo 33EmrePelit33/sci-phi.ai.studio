@@ -1,0 +1,139 @@
+{
+  "deltasBySite": {
+    "grok-me": {
+      "reads": 6265,
+      "views": 8687
+    },
+    "blogger": {
+      "reads": 4602,
+      "views": 9465
+    },
+    "sci-phi-primary": {
+      "reads": 1390,
+      "views": 2070
+    },
+    "sci-phil-legacy": {
+      "reads": 68,
+      "views": 147
+    },
+    "science-philosophy-domain": {
+      "reads": 95,
+      "views": 119
+    },
+    "science-philosophy-author": {
+      "reads": 52,
+      "views": 103
+    },
+    "github-pages": {
+      "reads": 82,
+      "views": 89
+    },
+    "grok-app": {
+      "reads": 36,
+      "views": 93
+    }
+  },
+  "articleDeltas": {},
+  "uniqueVisitors24h": 8946,
+  "avgTimeOnScreen24h": "4 dk 18 sn",
+  "bounceRate24h": "22.4%",
+  "activeVisitors": 27,
+  "lastUpdated": "2026-10-23T06:46:23.597Z",
+  "recentEvents": [
+    {
+      "type": "live_article_read",
+      "details": "emrepelit.github.io/science-philosophy → La estructura de simulación del tiempo y la perc (+1 Net Okunma, +1 Görüntüleme)",
+      "timestamp": "06:46:23 (Canlı)"
+    },
+    {
+      "type": "live_page_view",
+      "details": "science-philosophy-emre-pelit.ai.studio → Die Simulationsstruktur der Zeit und die neurona (+1 Görüntüleme)",
+      "timestamp": "06:46:17 (Canlı)"
+    },
+    {
+      "type": "live_article_read",
+      "details": "science-philosophy.ai.studio → La structure de simulation du temps et la percep (+1 Net Okunma, +1 Görüntüleme)",
+      "timestamp": "06:46:11 (Canlı)"
+    },
+    {
+      "type": "live_page_view",
+      "details": "sci-phil.ai.studio → Zamanın Simülasyon Yapısı ve Nöronal Zaman Algıs (+1 Görüntüleme)",
+      "timestamp": "06:46:05 (Canlı)"
+    },
+    {
+      "type": "live_article_read",
+      "details": "emrepelit7337.blogspot.com → Does the Fact That LLMs Mimic Human Behavior Sho (+1 Net Okunma, +1 Görüntüleme)",
+      "timestamp": "06:45:59 (Canlı)"
+    },
+    {
+      "type": "live_page_view",
+      "details": "science-philosophy.grok.me → ¿El hecho de que los LLM imiten el comportamient (+1 Görüntüleme)",
+      "timestamp": "06:45:53 (Canlı)"
+    },
+    {
+      "type": "live_article_read",
+      "details": "sci-phi.ai.studio → Le fait que les LLM imitent le comportement huma (+1 Net Okunma, +1 Görüntüleme)",
+      "timestamp": "06:45:47 (Canlı)"
+    },
+    {
+      "type": "live_page_view",
+      "details": "emrepelit7337.blogspot.com → Beweist die Tatsache, dass LLMs menschliches Ver (+1 Görüntüleme)",
+      "timestamp": "06:45:41 (Canlı)"
+    },
+    {
+      "type": "live_article_read",
+      "details": "science-philosophy.grok.me → LLM’lerin İnsan Davranışını Taklit Etmesi Onları (+1 Net Okunma, +1 Görüntüleme)",
+      "timestamp": "06:45:35 (Canlı)"
+    },
+    {
+      "type": "live_page_view",
+      "details": "grok.com/emrepelit → The Universe Has Always Been a Singular Phenomen (+1 Görüntüleme)",
+      "timestamp": "06:45:29 (Canlı)"
+    },
+    {
+      "type": "live_article_read",
+      "details": "emrepelit.github.io/science-philosophy → El Universo Siempre Fue Un Fenómeno Singular, Y  (+1 Net Okunma, +1 Görüntüleme)",
+      "timestamp": "06:45:23 (Canlı)"
+    },
+    {
+      "type": "live_page_view",
+      "details": "science-philosophy-emre-pelit.ai.studio → Das Universum war schon immer ein einzigartiges  (+1 Görüntüleme)",
+      "timestamp": "06:45:17 (Canlı)"
+    }
+  ],
+  "previousDayClosingBySite": {
+    "grok-me": {
+      "reads": 6265,
+      "views": 8687
+    },
+    "blogger": {
+      "reads": 4602,
+      "views": 9465
+    },
+    "sci-phi-primary": {
+      "reads": 1390,
+      "views": 2070
+    },
+    "sci-phil-legacy": {
+      "reads": 68,
+      "views": 147
+    },
+    "science-philosophy-domain": {
+      "reads": 95,
+      "views": 119
+    },
+    "science-philosophy-author": {
+      "reads": 52,
+      "views": 103
+    },
+    "github-pages": {
+      "reads": 81,
+      "views": 88
+    },
+    "grok-app": {
+      "reads": 36,
+      "views": 93
+    }
+  },
+  "lastRolloverDay": "2026-10-23"
+}

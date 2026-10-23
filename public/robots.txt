@@ -1,0 +1,83 @@
+User-agent: *
+Allow: /
+Allow: /makale/
+Allow: /tr/
+Allow: /en/
+Allow: /de/
+Allow: /fr/
+Allow: /es/
+Allow: /it/
+Allow: /ru/
+Allow: /ar/
+Allow: /zh/
+Allow: /ja/
+Allow: /analytics.html
+Allow: /automation-panel.html
+Disallow: /api/
+
+User-agent: Googlebot
+Allow: /
+Allow: /makale/
+Allow: /analytics.html
+Allow: /automation-panel.html
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-News
+Allow: /
+Allow: /makale/
+
+User-agent: Bingbot
+Allow: /
+Allow: /makale/
+
+User-agent: YandexBot
+Allow: /
+Allow: /makale/
+
+User-agent: DuckDuckBot
+Allow: /
+Allow: /makale/
+
+User-agent: Applebot
+Allow: /
+Allow: /makale/
+
+User-agent: Baiduspider
+Allow: /
+Allow: /makale/
+
+User-agent: NaverBot
+Allow: /
+Allow: /makale/
+
+User-agent: SeznamBot
+Allow: /
+Allow: /makale/
+
+User-agent: Slurp
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+Sitemap: https://sci-phi.ai.studio/sitemap.xml
+Sitemap: https://sci-phi.ai.studio/sitemap-tr.xml
+Sitemap: https://sci-phi.ai.studio/sitemap-en.xml
+Sitemap: https://sci-phi.ai.studio/sitemap-de.xml
+Sitemap: https://sci-phi.ai.studio/sitemap-fr.xml
+Sitemap: https://sci-phi.ai.studio/sitemap-es.xml
+Sitemap: https://sci-phi.ai.studio/sitemap-it.xml
+Sitemap: https://sci-phi.ai.studio/sitemap-ru.xml
+Sitemap: https://sci-phi.ai.studio/sitemap-ar.xml
+Sitemap: https://sci-phi.ai.studio/sitemap-zh.xml
+Sitemap: https://sci-phi.ai.studio/sitemap-ja.xml
+Host: sci-phi.ai.studio
+

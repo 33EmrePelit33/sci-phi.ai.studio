@@ -1,0 +1,34 @@
+{
+  "version": "2026.10.23",
+  "start_date": "2026-04-24",
+  "end_date": "2026-10-23",
+  "description": "Emre Pelit (emrepelit39@gmail.com • www.linkedin.com/in/emrepelit109) ekosistemindeki 8 web sitesinin açılış zamanından (24 Nisan 2026) itibaren elde ettiği okunma ve görüntüleme verileri.",
+  "primary_portal": {
+    "domain": "science-philosophy.grok.me",
+    "title": "Science · Kalıcı Philosophy",
+    "base_reads": 32486,
+    "base_views": 32488,
+    "live_reads_added": 6240,
+    "live_views_added": 8640,
+    "net_reads": 38726,
+    "page_views": 41128
+  },
+  "blogger_ecosystem": {
+    "domain": "emrepelit7337.blogspot.com",
+    "title": "Emre Pelit Blogger Külliyatı",
+    "base_reads": 25431,
+    "base_views": 45622,
+    "live_reads_added": 4580,
+    "live_views_added": 9420,
+    "net_reads": 30011,
+    "page_views": 55042
+  },
+  "consolidated_totals": {
+    "base_net_reads": 57956,
+    "base_page_views": 78181,
+    "live_reads_added": 12472,
+    "live_views_added": 20503,
+    "combined_net_reads": 70428,
+    "cumulative_page_views": 98684
+  }
+}
